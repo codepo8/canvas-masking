@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+  <meta name="viewport" content="width=device-width">
+  <meta charset="UTF-8">
+  <title>Canvas masking</title>
+  <style type="text/css">
+  html {
+    background: #333;
+    height: 100%;
+    font-family: Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    margin: 0;
+    padding: 2em;
+    background: linear-gradient(to bottom, powderblue, #369);
+
+  }
+  h1, h2 {
+    font-size: 20px;
+    font-weight: normal;
+    color: #fff;
+    text-shadow: 0px 1px 1px #000;
+  }
+  h1 {
+    font-size: 24px;
+    margin-top: 0 ;
+  }
+  p {font-size: 18px; color: #030;}
+  code {background: #eee; color: #000; padding: 2px 5px;}
+  pre {
+    font-size: 18px;
+  }
+  </style>
+</head>
+<body>
+<header>  
+  <h1>Image masking with &lt;canvas&gt;</h1>
+  <p>This is a small demo how to mask images with canvas. Simply add the <code>canvasmask.js</code> file, add a class <code>mask</code> to the images you want to mask and their mask PNG file as a <code>data-mask</code>. For example:</p>
+  <pre>
+  &lt;img src="red-panda.jpg" alt="Red panda" class="mask" data-mask="centerblur.png"&gt;
+  &lt;img src="red-panda.jpg" alt="Red panda" class="mask" data-mask="star.png"&gt;
+</pre>
+</header>
+<section>
+  <h2>Results</h2>
+  <img src="red-panda.jpg" alt="Red panda" class="mask" data-mask="centerblur.png">
+  <img src="red-panda.jpg" alt="Red panda" class="mask" data-mask="star.png">
+</section>
+<section>
+  <h2>The Image and masks</h2>
+  <img src="red-panda.jpg" alt="Red panda">
+  <img src="centerblur.png" alt="center blur">
+  <img src="star.png" alt="star">
+</section>
+<script src="canvasmask.js"></script>
+</body>
+</html>
