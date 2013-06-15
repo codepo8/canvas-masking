@@ -16,8 +16,12 @@ Under the hood
 There is no magic going on here. Under the hood the script:
 
 * Loops over all the images with a class of `mask`
-* Copies the image to a canvas and creates a new image from its `data-mask` value
-* Copies the mask image to another canvas
-* Loops over the pixels and applies the alpha of each pixel of the mask to the alpha of the original image
+* Creates a new image from its `data-mask` value
+* Copies the mask image to the canvas 
+* Changes the compositing of the canvas to `source-atop` to merge the images
+* writes the image back to the image element.
 
-As JPGs always have an alpha of 1, this is all that needs to be done - modify every 4th value in the pixels array of the canvas.
+Originally I looped over all the pixels, but this is not needed as pointed out by @jaffathecake on Twitter. 
+
+
+
