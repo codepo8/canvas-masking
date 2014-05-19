@@ -8,20 +8,26 @@
   */
   window.addEventListener('load', function(){
     [].forEach.call(document.querySelectorAll('.mask'), function(img){
-      var width  = img.offsetWidth;
-      var height = img.offsetHeight;
+      var newImg = document.createElement('img');
+      newImg.src = img.src;
+      
+      newImg.onload = function() {
+        var width  = newImg.width;
+        var height = newImg.height;
 
-      var mask = document.createElement('img');
-      mask.src = img.getAttribute('data-mask');
+        var mask = document.createElement('img');
+        mask.src = img.getAttribute('data-mask');
+        mask.onload = function() {
+          imagecanvas.width  = width;
+          imagecanvas.height = height;
 
-      imagecanvas.width  = width;
-      imagecanvas.height = height;
+          imagecontext.drawImage(mask, 0, 0, width, height);
+          imagecontext.globalCompositeOperation = 'source-atop';
+          imagecontext.drawImage(img, 0, 0);
 
-      imagecontext.drawImage(mask, 0, 0, width, height);
-      imagecontext.globalCompositeOperation = 'source-atop';
-      imagecontext.drawImage(img, 0, 0);
-
-      img.src = imagecanvas.toDataURL();
+          img.src = imagecanvas.toDataURL();
+        }
+      }
     });
   }, false);
 
