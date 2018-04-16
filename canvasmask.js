@@ -22,7 +22,7 @@
           imagecanvas.height = height;
 
           imagecontext.drawImage(mask, 0, 0, width, height);
-          imagecontext.globalCompositeOperation = 'source-atop';
+          imagecontext.globalCompositeOperation = 'source-in';
           imagecontext.drawImage(img, 0, 0);
 
           img.src = imagecanvas.toDataURL();
